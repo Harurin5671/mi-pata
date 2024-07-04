@@ -1,20 +1,31 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import React, { useEffect } from 'react'
+import { SafeAreaProvider } from 'react-native-safe-area-context'
 
-export default function App() {
+import AppNavigator from '@navigation/AppNavigator'
+import { useSplashScreen } from '@hooks/useSplashScreen'
+
+const App: React.FC = () => {
+  const { fontsLoaded, onLayoutRootView } = useSplashScreen()
+
+  useEffect(() => {
+    const handleLayout = async (): Promise<void> => {
+      if (fontsLoaded) {
+        await onLayoutRootView()
+      }
+    }
+
+    void handleLayout()
+  }, [fontsLoaded, onLayoutRootView])
+
+  if (!fontsLoaded) {
+    return null
+  }
+
   return (
-    <View style={styles.container}>
-      <Text>Open up App.tsx to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
-  );
+    <SafeAreaProvider>
+      <AppNavigator />
+    </SafeAreaProvider>
+  )
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
+export default App
