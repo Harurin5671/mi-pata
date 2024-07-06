@@ -1,5 +1,5 @@
 import React from 'react'
-import { StyleSheet, Text, TextInput, type TextInputProps, View } from 'react-native'
+import { StyleSheet, Text, View } from 'react-native'
 
 import ScreenContainer from '@components/ScreenContainer'
 import LogoWithSpacer from '@components/LogoWithSpacer'
@@ -7,32 +7,13 @@ import Spacer from '@components/Spacer'
 import { globalStyles } from '@themes/globalStyles'
 import CustomButton from '@components/CustomButton'
 import AuthSocial from '@components/AuthSocial'
+import CustomInput from '@components/CustomInput'
 
-interface CustomInputProps extends TextInputProps {
-  containerStyle?: object
-  placeHolder: string
-  placeHolderColor: string
+interface SignUpScreenProps {
+  navigation: any
 }
 
-const CustomInput: React.FC<CustomInputProps> = ({
-  containerStyle,
-  placeHolder,
-  placeHolderColor,
-  ...props
-}) => {
-  return (
-    <View style={[styles.container, containerStyle]}>
-      <TextInput
-        style={styles.input}
-        placeholder={placeHolder}
-        placeholderTextColor={placeHolderColor}
-        {...props}
-      />
-    </View>
-  )
-}
-
-const SignUpScreen: React.FC = () => {
+const SignUpScreen: React.FC<SignUpScreenProps> = ({ navigation }) => {
   return (
     <ScreenContainer>
       <LogoWithSpacer />
@@ -57,7 +38,6 @@ const SignUpScreen: React.FC = () => {
         keyboardType="email-address"
       />
       <Spacer height={26} />
-      <View style={{ alignItems: 'center' }}>
         <CustomButton
           title="Ingresa con e-mail"
           onPress={() => {
@@ -69,7 +49,7 @@ const SignUpScreen: React.FC = () => {
         <CustomButton
           title="Regresar"
           onPress={() => {
-            console.log('hola')
+            navigation.goBack()
           }}
           textSize={16}
           backgroundColor="#fff"
@@ -77,7 +57,6 @@ const SignUpScreen: React.FC = () => {
           borderColor="#374AA6"
           fontWeight="500"
         />
-      </View>
       <Spacer height={16} />
       <View style={{ alignItems: 'center' }}>
         <AuthSocial />
