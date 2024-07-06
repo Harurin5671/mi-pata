@@ -8,15 +8,18 @@ import { globalStyles } from '@themes/globalStyles'
 import CustomButton from '@components/CustomButton'
 import AuthSocial from '@components/AuthSocial'
 import CustomInput from '@components/CustomInput'
+import useNavigationHandler from '@hooks/useNavigationHandler'
 
 interface SignUpScreenProps {
   navigation: any
 }
 
 const SignUpScreen: React.FC<SignUpScreenProps> = ({ navigation }) => {
+  const handleNavigation = useNavigationHandler()
+
   return (
     <ScreenContainer>
-      <LogoWithSpacer />
+      <LogoWithSpacer imageSource={require('@assets/images/logo_mi_pata_blue.png')} height={100}/>
       <Spacer height={12} />
       <View
         style={{
@@ -40,9 +43,7 @@ const SignUpScreen: React.FC<SignUpScreenProps> = ({ navigation }) => {
       <Spacer height={26} />
         <CustomButton
           title="Ingresa con e-mail"
-          onPress={() => {
-            console.log('hola')
-          }}
+          onPress={handleNavigation('EmailSentScreen')}
           textSize={14}
         />
         <Spacer height={16} />
