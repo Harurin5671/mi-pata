@@ -12,7 +12,7 @@ import AuthSocial from '@components/AuthSocial'
 const LoginScreen: React.FC = () => {
   return (
     <ScreenContainer>
-      <LogoWithSpacer />
+      <LogoWithSpacer imageSource={require('@assets/images/logo_mi_pata_blue.png')} height={100}/>
       <Spacer height={12} />
       <View
         style={{

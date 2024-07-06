@@ -5,6 +5,7 @@ import { type RootStackParamList } from '@interfaces/navigation'
 import AuthScreen from '@screens/auth/AuthScreen'
 import LoginScreen from '@screens/auth/LoginScreen'
 import SignUpScreen from '@screens/auth/SignUpScreen'
+import EmailSentScreen from '@screens/auth/EmailSentScreen'
 
 const Stack = createNativeStackNavigator<RootStackParamList>()
 
@@ -24,6 +25,11 @@ const AuthNavigator = (): React.ReactElement => {
       <Stack.Screen
         name="SignUpScreen"
         component={SignUpScreen}
+        options={{ headerShown: false }}
+      />
+      <Stack.Screen
+        name="EmailSentScreen"
+        component={EmailSentScreen}
         options={{ headerShown: false }}
       />
     </Stack.Navigator>

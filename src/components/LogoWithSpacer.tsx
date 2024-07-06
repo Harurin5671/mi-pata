@@ -1,13 +1,18 @@
 import React from 'react'
-import { Image, View } from 'react-native'
+import { Image, View, type ImageSourcePropType } from 'react-native'
 
 import Spacer from '@components/Spacer'
 
-const LogoWithSpacer: React.FC = () => {
+interface LogoWithSpacerProps {
+  imageSource: ImageSourcePropType
+  height: number
+}
+
+const LogoWithSpacer: React.FC<LogoWithSpacerProps> = ({ imageSource, height }) => {
   return (
     <View style={{ alignItems: 'center' }}>
-      <Spacer height={100} />
-      <Image source={require('@assets/images/logo_mi_pata_blue.png')} />
+      <Spacer height={height} />
+      <Image source={imageSource} />
     </View>
   )
 }
