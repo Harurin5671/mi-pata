@@ -8,7 +8,7 @@ import { globalStyles } from '@themes/globalStyles'
 const TyC: React.FC = () => {
   return (
     <>
-      <View style={{ width: '90%', alignItems: 'center' }}>
+      <View style={styles.tycContainer}>
         <Text style={[{ fontSize: 12, color: '#828282' }, globalStyles.text]}>
         Al hacer clic en Continuar, acepta nuestros
         </Text>
@@ -18,7 +18,7 @@ const TyC: React.FC = () => {
   )
 }
 
-const AutSocial: React.FC = () => {
+const AuthSocial: React.FC = () => {
   const handlePress = (): void => {
     // Lógica a ejecutar cuando se presiona el botón
     alert('El texto ingresado es: pipipip')
@@ -74,7 +74,8 @@ const AutSocial: React.FC = () => {
 }
 
 const styles = StyleSheet.create({
-  text: { fontSize: 14, color: '#828282' }
+  text: { fontSize: 14, color: '#828282' },
+  tycContainer: { width: '90%', alignItems: 'center' }
 })
 
-export default AutSocial
+export default AuthSocial

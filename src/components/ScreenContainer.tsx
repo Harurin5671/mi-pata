@@ -16,7 +16,7 @@ const ScreenContainer: React.FC<ScreenContainerProps> = ({ children }) => {
 }
 
 const styles = StyleSheet.create({
-  container: { flex: 1, backgroundColor: '#fff', padding: 15 }
+  container: { flex: 1, backgroundColor: '#fff', padding: 15, alignItems: 'center' }
 })
 
 export default ScreenContainer

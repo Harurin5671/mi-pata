@@ -21,7 +21,7 @@ const AuthMain: React.FC<AuthMainProps> = ({ navigation }) => {
       <Spacer height={100} />
       <CustomButton onPress={handleNavigation('SignUpScreen')} title="Crea una Cuenta" />
       <Spacer height={12} />
-      <CustomButton onPress={handleNavigation('WelcomeScreen')} title="Iniciar sesión" />
+      <CustomButton onPress={handleNavigation('LoginScreen')} title="Iniciar sesión" />
       <Spacer height={26} />
     </>
   )
