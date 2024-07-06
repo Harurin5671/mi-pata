@@ -3,29 +3,17 @@ import { NavigationContainer } from '@react-navigation/native'
 import { createNativeStackNavigator } from '@react-navigation/native-stack'
 import { type RootStackParamList } from '@interfaces/navigation'
 
-import AuthScreen from '@screens/AuthScreen'
-import WelcomeScreen from '@screens/WelcomeScreen'
-import SignUpScreen from '@screens/SignUpScreen'
+import AuthNavigator from './AuthNavigator'
 
 const Stack = createNativeStackNavigator<RootStackParamList>()
 
 const AppNavigator = (): React.ReactElement => {
   return (
     <NavigationContainer>
-      <Stack.Navigator initialRouteName="AuthScreen">
+      <Stack.Navigator initialRouteName="Auth">
         <Stack.Screen
-          name="AuthScreen"
-          component={AuthScreen}
-          options={{ headerShown: false }}
-        />
-        <Stack.Screen
-          name="WelcomeScreen"
-          component={WelcomeScreen}
-          options={{ headerShown: false }}
-        />
-         <Stack.Screen
-          name="SignUpScreen"
-          component={SignUpScreen}
+          name="Auth"
+          component={AuthNavigator}
           options={{ headerShown: false }}
         />
       </Stack.Navigator>
