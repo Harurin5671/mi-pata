@@ -1,39 +1,32 @@
-import React from 'react'
+/* eslint-disable @typescript-eslint/no-namespace */
 import { createNativeStackNavigator } from '@react-navigation/native-stack'
-import { type RootStackParamList } from '@interfaces/navigation'
+import { type StaticParamList } from '@react-navigation/native'
 
 import AuthScreen from '@screens/auth/AuthScreen'
 import LoginScreen from '@screens/auth/LoginScreen'
 import SignUpScreen from '@screens/auth/SignUpScreen'
 import EmailSentScreen from '@screens/auth/EmailSentScreen'
+import CompleteProfileScreen from '@screens/auth/CompleteProfileScreen'
+import { type AuthStackParamList } from '@interfaces/navigation'
 
-const Stack = createNativeStackNavigator<RootStackParamList>()
-
-const AuthNavigator = (): React.ReactElement => {
-  return (
-    <Stack.Navigator initialRouteName="AuthScreen">
-      <Stack.Screen
-        name="AuthScreen"
-        component={AuthScreen}
-        options={{ headerShown: false }}
-      />
-      <Stack.Screen
-        name="LoginScreen"
-        component={LoginScreen}
-        options={{ headerShown: false }}
-      />
-      <Stack.Screen
-        name="SignUpScreen"
-        component={SignUpScreen}
-        options={{ headerShown: false }}
-      />
-      <Stack.Screen
-        name="EmailSentScreen"
-        component={EmailSentScreen}
-        options={{ headerShown: false }}
-      />
-    </Stack.Navigator>
-  )
+declare global {
+  namespace ReactNavigation {
+    interface RootParamList extends StaticParamList<typeof AuthNavigator> {}
+  }
 }
+
+const AuthNavigator = createNativeStackNavigator<AuthStackParamList>({
+  initialRouteName: 'AuthScreen',
+  screenOptions: {
+    headerShown: false
+  },
+  screens: {
+    AuthScreen,
+    LoginScreen,
+    SignUpScreen,
+    EmailSentScreen,
+    CompleteProfileScreen
+  }
+})
 
 export default AuthNavigator
