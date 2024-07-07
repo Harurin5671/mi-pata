@@ -1,17 +1,17 @@
 import React from 'react'
+// import { useNavigation } from '@react-navigation/native'
 
-import { type HomeScreenProps } from '@interfaces/navigation'
 import ScreenContainer from '@components/ScreenContainer'
 import AutSocial from '@components/AuthSocial'
 import AuthMain from '@components/AuthMain'
 
-const HomeScreen: React.FC<HomeScreenProps> = ({ navigation }) => {
+const AuthScreen: React.FC = () => {
   return (
-    <ScreenContainer>
-        <AuthMain navigation={navigation} />
+    <ScreenContainer wrapperStyle={{ backgroundColor: '#fff' }} barStyle='dark-content' >
+        <AuthMain />
         <AutSocial />
     </ScreenContainer>
   )
 }
 
-export default HomeScreen
+export default AuthScreen
