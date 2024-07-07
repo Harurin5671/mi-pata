@@ -1,14 +1,25 @@
 import React, { type ReactNode } from 'react'
-import { View, StyleSheet, type ViewStyle } from 'react-native'
+import { ImageBackground, View, StatusBar, StyleSheet, type ViewStyle, type ImageSourcePropType } from 'react-native'
 import { useSafeAreaInsets } from 'react-native-safe-area-context'
 
 interface SafeAreaWrapperProps {
   children: ReactNode
   style?: ViewStyle
+  imageBackground?: ImageSourcePropType
+  barStyle?: 'default' | 'light-content' | 'dark-content'
 }
 
-const SafeAreaWrapper: React.FC<SafeAreaWrapperProps> = ({ children, style }) => {
+const SafeAreaWrapper: React.FC<SafeAreaWrapperProps> = ({ children, style, imageBackground, barStyle = 'default' }) => {
   const insets = useSafeAreaInsets()
+
+  if (imageBackground != null) {
+    return (
+      <ImageBackground source={imageBackground} style={styles.container}>
+        <StatusBar barStyle={barStyle} backgroundColor="transparent" translucent={true} />
+        {children}
+      </ImageBackground>
+    )
+  }
 
   return (
     <View
@@ -19,6 +30,7 @@ const SafeAreaWrapper: React.FC<SafeAreaWrapperProps> = ({ children, style }) =>
         paddingRight: insets.right
       }]}
     >
+      <StatusBar barStyle={barStyle} backgroundColor="transparent" translucent={true} />
       {children}
     </View>
   )
