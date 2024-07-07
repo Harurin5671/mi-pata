@@ -1,8 +1,11 @@
 {
   "expo": {
     "name": "mipata",
-    "slug": "mipata",
+    "slug": "mi-pata",
     "version": "1.0.0",
+    "runtimeVersion": {
+      "policy": "sdkVersion"
+    },
     "orientation": "portrait",
     "icon": "./assets/images/icon.png",
     "userInterfaceStyle": "automatic",
@@ -11,18 +14,27 @@
       "resizeMode": "cover"
     },
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "infoPlist": {
+        "NSCameraUsageDescription": "This app uses the camera to allow users to take photos for their profile."
+      }
     },
     "android": {
       "adaptiveIcon": {
         "foregroundImage": "./assets/images/icon.png"
       },
+      "softwareKeyboardLayoutMode": "pan",
       "package": "com.harurin.mipata",
       "splash": {
         "image": "./assets/images/splash.png",
         "resizeMode": "cover",
         "backgroundColor": "#003366"
-      }
+      },
+      "permissions": [
+        "CAMERA",
+        "WRITE_EXTERNAL_STORAGE",
+        "READ_EXTERNAL_STORAGE"
+      ]
     },
     "web": {
       "favicon": "./assets/images/favicon.png"
