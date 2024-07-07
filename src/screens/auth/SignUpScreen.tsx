@@ -8,17 +8,17 @@ import { globalStyles } from '@themes/globalStyles'
 import CustomButton from '@components/CustomButton'
 import AuthSocial from '@components/AuthSocial'
 import CustomInput from '@components/CustomInput'
-import useNavigationHandler from '@hooks/useNavigationHandler'
+import { useNavigation } from '@react-navigation/native'
+// import useNavigationHandler from '@hooks/useNavigationHandler'
 
-interface SignUpScreenProps {
-  navigation: any
-}
+// interface SignUpScreenProps {
+//   navigation: any
+// }
 
-const SignUpScreen: React.FC<SignUpScreenProps> = ({ navigation }) => {
-  const handleNavigation = useNavigationHandler()
-
+const SignUpScreen: React.FC = () => {
+  const navigation = useNavigation()
   return (
-    <ScreenContainer>
+    <ScreenContainer wrapperStyle={{ backgroundColor: '#fff' }} barStyle='dark-content'>
       <LogoWithSpacer imageSource={require('@assets/images/logo_mi_pata_blue.png')} height={100}/>
       <Spacer height={12} />
       <View
@@ -43,7 +43,7 @@ const SignUpScreen: React.FC<SignUpScreenProps> = ({ navigation }) => {
       <Spacer height={26} />
         <CustomButton
           title="Ingresa con e-mail"
-          onPress={handleNavigation('EmailSentScreen')}
+          onPress={() => { navigation.navigate('EmailSentScreen') }}
           textSize={14}
         />
         <Spacer height={16} />

@@ -1,5 +1,6 @@
 import React from 'react'
 import { StyleSheet, Text, View } from 'react-native'
+import { useNavigation } from '@react-navigation/native'
 
 import ScreenContainer from '@components/ScreenContainer'
 import LogoWithSpacer from '@components/LogoWithSpacer'
@@ -10,6 +11,8 @@ import CustomButton from '@components/CustomButton'
 import AuthSocial from '@components/AuthSocial'
 
 const LoginScreen: React.FC = () => {
+  const navigation = useNavigation()
+
   return (
     <ScreenContainer>
       <LogoWithSpacer imageSource={require('@assets/images/logo_mi_pata_blue.png')} height={100}/>
@@ -44,7 +47,7 @@ const LoginScreen: React.FC = () => {
       <CustomButton
         title="Regresar"
         onPress={() => {
-          console.log('🚀 ~ Hola')
+          navigation.goBack()
         }}
         textSize={14}
         fontWeight='500'
