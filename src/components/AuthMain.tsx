@@ -17,11 +17,19 @@ const AuthMain: React.FC = () => {
 
   return (
     <>
-      <LogoWithSpacer imageSource={require('@assets/images/logo_mi_pata_blue.png')} height={100}/>
+      <LogoWithSpacer
+        imageSource={require('@assets/images/logo_mi_pata_blue.png')}
+        height={100}
+      />
       <Spacer height={100} />
       <CustomButton onPress={() => { navigation.navigate('SignUpScreen') }} title="Crea una Cuenta" />
       <Spacer height={12} />
-      <CustomButton onPress={() => { navigation.navigate('LoginScreen') }} title="Iniciar sesión" />
+      <CustomButton
+        onPress={() => {
+          navigation.navigate('LoginScreen')
+        }}
+        title="Iniciar sesión"
+      />
       <Spacer height={26} />
     </>
   )

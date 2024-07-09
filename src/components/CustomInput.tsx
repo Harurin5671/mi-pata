@@ -1,39 +1,65 @@
 import React from 'react'
-import { StyleSheet, TextInput, View, type TextInputProps } from 'react-native'
+import { StyleSheet } from 'react-native'
+import { Input, type InputProps } from '@rneui/themed'
 
-interface CustomInputProps extends TextInputProps {
+interface CustomInputProps extends InputProps {
   containerStyle?: object
   placeHolder: string
-  placeHolderColor: string
+  customWidth?: number
 }
 
 const CustomInput: React.FC<CustomInputProps> = ({
   containerStyle,
   placeHolder,
-  placeHolderColor,
+  customWidth,
   ...props
 }) => {
+  const InputContainer = [
+    styles.container,
+    customWidth != null ? { width: customWidth } : {}
+  ]
+
   return (
-    <View style={[styles.container, containerStyle]}>
-      <TextInput
-        style={styles.input}
-        placeholder={placeHolder}
-        placeholderTextColor={placeHolderColor}
-        {...props}
-      />
-    </View>
+    <Input
+      inputContainerStyle={{ borderBottomWidth: 0 }}
+      containerStyle={InputContainer}
+      placeholder={placeHolder}
+      inputStyle={styles.text}
+      {...props}
+    />
+    // <View style={[styles.container, containerStyle]}>
+    //   {/* <TextInput
+    //     style={styles.input}
+    //     placeholder={placeHolder}
+    //     placeholderTextColor={placeHolderColor}
+    //     {...props}
+    //   /> */}
+    //   <Input
+    //     inputContainerStyle={{ borderBottomWidth: 0 }}
+    //     containerStyle={{ borderColor: '#E0E0E0', height: 40, borderWidth: 1, borderRadius: 25 }}
+    //     placeholder={placeHolder}
+    //     {...props}
+    //   />
+    // </View>
   )
 }
 
 const styles = StyleSheet.create({
   text: { color: '#000', fontSize: 18, fontWeight: '700' },
+  container: {
+    borderColor: '#E0E0E0',
+    height: 40,
+    borderWidth: 1,
+    borderRadius: 25,
+    alignItems: 'center',
+    paddingLeft: 15
+  },
   subtitle: {
     color: '#000',
     fontSize: 14,
     textAlign: 'center',
     fontWeight: '400'
   },
-  container: { width: '100%', paddingHorizontal: 20 },
   input: {
     height: 40,
     borderColor: '#E0E0E0',
