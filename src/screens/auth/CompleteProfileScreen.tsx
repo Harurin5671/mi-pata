@@ -1,14 +1,22 @@
-import SafeAreaWrapper from '@components/SafeAreaWrapper'
-import Spacer from '@components/Spacer'
-import { globalStyles } from '@themes/globalStyles'
 import React from 'react'
-import { Image, ImageBackground, StyleSheet, Text, TextInput, View } from 'react-native'
+import {
+  Dimensions,
+  Image,
+  ImageBackground,
+  StyleSheet,
+  View
+} from 'react-native'
 
-// import ScreenContainer from '@components/ScreenContainer'
+import ScreenContainer from '@components/ScreenContainer'
+import Spacer from '@components/Spacer'
+import CustomButton from '@components/CustomButton'
+import LabeledTextInput from '@components/LabeledTextInput'
 
 const CompleteProfileScreen: React.FC = () => {
+  const { width } = Dimensions.get('window')
+
   return (
-    <SafeAreaWrapper
+    <ScreenContainer
       imageBackground={require('@assets/images/png/background_radial.png')}
     >
       <ImageBackground
@@ -31,52 +39,54 @@ const CompleteProfileScreen: React.FC = () => {
             padding: 20
           }}
         >
-          <Spacer height={38}/>
-          <View style={styles.container1}>
-      <Text style={[styles.label, globalStyles.text]}>Nombre</Text>
-      <TextInput
-        style={[styles.input, globalStyles.text]}
-      />
-    </View>
+          <Spacer height={38} />
+          <LabeledTextInput label="Nombre" />
+          <Spacer height={12} />
+          <LabeledTextInput label="Correo" />
+          <Spacer height={12} />
+          <LabeledTextInput label="Contraseña" secureTextEntry />
+          <Spacer height={12} />
+          <LabeledTextInput label="Confirmar contraseña" secureTextEntry />
+          <Spacer height={50.5} />
+          <View style={{ alignItems: 'center' }}>
+            <View
+              style={{
+                backgroundColor: '#E8E8E8',
+                width: width * 0.8,
+                height: 2
+              }}
+            />
+          </View>
+          <Spacer height={150} />
+          <View
+            style={{
+              alignItems: 'center'
+            }}
+          >
+            <CustomButton
+              title="Completar"
+              onPress={() => {
+                console.log('hola')
+              }}
+              fontWeight="500"
+              customWidth={width * 0.8}
+              textSize={14}
+            />
+          </View>
         </View>
         <View style={styles.circle}>
-        <Image
+          <Image
             source={require('@assets/images/png/img_perfil_men_default.jpg')}
             style={styles.image}
             resizeMode="cover"
           />
-          </View>
+        </View>
       </ImageBackground>
-    </SafeAreaWrapper>
+    </ScreenContainer>
   )
 }
 
 const styles = StyleSheet.create({
-  container1: {
-    marginVertical: 10,
-    borderWidth: 2,
-    borderColor: '#E1E1E1',
-    borderRadius: 20,
-    paddingTop: 4,
-    paddingLeft: 20
-  },
-  label: {
-    position: 'absolute',
-    top: -10,
-    left: 15,
-    backgroundColor: '#fff',
-    paddingHorizontal: 5,
-    fontSize: 16,
-    color: '#808080',
-    fontWeight: '500'
-  },
-  input: {
-    height: 40,
-    paddingHorizontal: 10,
-    color: '#000',
-    fontSize: 18,
-    fontWeight: '500'
-  },
   circle: {
     position: 'absolute',
     width: 139,

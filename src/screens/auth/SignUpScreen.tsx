@@ -1,5 +1,5 @@
 import React from 'react'
-import { StyleSheet, Text, View } from 'react-native'
+import { Dimensions, StyleSheet, Text, View } from 'react-native'
 
 import ScreenContainer from '@components/ScreenContainer'
 import LogoWithSpacer from '@components/LogoWithSpacer'
@@ -37,8 +37,9 @@ const SignUpScreen: React.FC = () => {
       <Spacer height={24} />
       <CustomInput
         placeHolder="email@correo.com"
-        placeHolderColor="#828282"
         keyboardType="email-address"
+        customWidth={Dimensions.get('window').width * 0.9}
+        placeholderTextColor='#828282'
       />
       <Spacer height={26} />
         <CustomButton
